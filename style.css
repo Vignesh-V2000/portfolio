@@ -405,7 +405,7 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-top: 24px;
+  margin-top: 20px;
 }
 .stat-card {
   background: var(--bg-card);
@@ -424,6 +424,53 @@ ul { list-style: none; }
   margin-bottom: 4px;
 }
 .stat-label { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+
+/* About Photo Card */
+.about-photo {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2px solid rgba(255, 151, 103, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(255, 151, 103, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(255, 151, 103, 0.12);
+  transition: all var(--duration) var(--ease);
+}
+.about-photo:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 0 1px rgba(255, 151, 103, 0.3),
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(255, 151, 103, 0.2);
+  border-color: rgba(255, 151, 103, 0.7);
+}
+.about-photo-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.5s var(--ease);
+}
+.about-photo:hover .about-photo-img {
+  transform: scale(1.04);
+}
+.about-photo-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(20, 22, 31, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 151, 103, 0.3);
+  color: var(--accent-soft);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+}
 
 /* ============================================================
    WHAT I DO (Services)
