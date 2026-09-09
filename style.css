@@ -1,6 +1,6 @@
 /* ============================================================
    DESIGN SYSTEM — Vignesh V Portfolio
-   Palette: #363636, #474747, #A8A7A7, #CC527A, #E8175D
+   Palette: #14161F, #1F2D3A, #FF9767, #FED7A5
    ============================================================ */
 
 @font-face {
@@ -197,10 +197,10 @@ ul { list-style: none; }
   object-position: right center;
   filter: blur(0px);
   transition: filter 0.15s linear;
-  transform: scale(1.05); /* prevents blur edge artifacts */
+  transform: scale(1.05);
 }
 
-/* Left-side gradient overlay — keeps text readable, face clear on right */
+/* Overlay: strong dark on the left (~50%), fades right so face shows clearly */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -453,7 +453,7 @@ ul { list-style: none; }
   transition: transform var(--duration) var(--ease);
 }
 .service-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-.service-card:hover::before { transform: scaleX(1); }
+
 
 .service-icon {
   width: 48px; height: 48px;
