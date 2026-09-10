@@ -15,8 +15,8 @@
 :root {
   /* Color Palette — High Contrast & Vibrant Glow */
   --bg:            #14161F;
-  --bg-card:       #1F2D3A;
-  --bg-card-hover: #293B4C;
+  --bg-card:       rgba(22, 30, 46, 0.75);
+  --bg-card-hover: rgba(32, 46, 64, 0.85);
   --text:          #FFFFFF;
   --text-muted:    #BAC0B3;
   --accent:        #FF9767;
@@ -49,7 +49,17 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 body {
   font-family: var(--font-body);
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(
+      rgba(20, 22, 31, 0.68),
+      rgba(20, 22, 31, 0.68)
+    ),
+    url('BG.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--text);
   line-height: 1.7;
   font-size: 16px;
@@ -60,6 +70,23 @@ body {
 a { color: var(--accent); text-decoration: none; transition: opacity var(--duration) var(--ease); }
 a:hover { opacity: 0.85; }
 img { max-width: 100%; display: block; }
+
+/* Universal glass effect — lets BG.jpg bleed through all cards */
+.stat-card,
+.service-card,
+.skill-card,
+.tool-card,
+.edu-card,
+.cert-card,
+.extra-card,
+.contribution-card,
+.project-block,
+.experience-header,
+.career-inner,
+.contact-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
 ul { list-style: none; }
 
 /* --- Layout --- */
@@ -669,7 +696,54 @@ ul { list-style: none; }
   font-size: 13px;
   color: var(--accent-soft);
   font-weight: 500;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+/* Project GIF Preview — browser chrome mock */
+.project-preview {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 151, 103, 0.2);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  margin-bottom: 24px;
+  background: #0d0f17;
+}
+.project-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #1a1d2a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-red    { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green  { background: #28c840; }
+.project-preview-url {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-left: 10px;
+  font-family: var(--font-body);
+  letter-spacing: 0.3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.project-preview-gif {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
 }
 .project-block > p {
   font-size: 14px;
