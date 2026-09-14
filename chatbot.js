@@ -6,7 +6,7 @@
 (function () {
 
   // ── Chat API Configuration ──
-  const API_ENDPOINT = 'https://YOUR-VERCEL-PROJECT.vercel.app/api/chat';
+  const API_ENDPOINT = '/api/chat';
   const MODEL        = 'openai/gpt-oss-20b';
   // Other available models: 'groq/compound', 'openai/gpt-oss-120b'
 
