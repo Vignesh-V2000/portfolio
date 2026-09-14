@@ -1,1 +1,4 @@
 .gif
+.env
+.env.*
+!.env.example

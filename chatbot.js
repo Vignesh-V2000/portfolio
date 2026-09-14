@@ -5,9 +5,8 @@
 
 (function () {
 
-  // ── Groq API Configuration ──
-  const GROQ_API_KEY = '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';
-  const API_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
+  // ── Chat API Configuration ──
+  const API_ENDPOINT = 'https://YOUR-VERCEL-PROJECT.vercel.app/api/chat';
   const MODEL        = 'openai/gpt-oss-20b';
   // Other available models: 'groq/compound', 'openai/gpt-oss-120b'
 
@@ -216,7 +215,6 @@ Vignesh V is an MCA graduate (Pondicherry University, 2024–2026) and AI/ML Dev
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${GROQ_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
