@@ -143,31 +143,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // progress goes 0 → 1 as you scroll through the hero
     const progress = Math.min(scrollY / (heroHeight * 0.7), 1);
 
-    // Blur: 0px at top → 12px at bottom of hero
-    const blurAmount = progress * 12;
+    const isMobile = window.innerWidth <= 768;
+    const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+
+    // Blur: Add base blur for mobile/tablet to make text pop immediately
+    let baseBlur = 0;
+    if (isMobile) baseBlur = 4;
+    else if (isTablet) baseBlur = 3;
+    
+    const blurAmount = baseBlur + (progress * 12);
     heroBgImg.style.filter = `blur(${blurAmount}px)`;
 
-    // Overlay darkens as you scroll
-    const overlayAlpha = 0.95 + (progress * 0.05); // left side gets even darker
-    const overlayMid = 0.65 + (progress * 0.3);    // mid section darkens
-    const overlayRight = 0.05 + (progress * 0.6);   // right side darkens
+    // Only override overlay background with JS on desktop/tablet-landscape
+    // so we don't break the CSS vertical gradient on mobile/tablet-portrait
+    if (!isMobile) {
+      const overlayAlpha = 0.95 + (progress * 0.05); // left side gets even darker
+      const overlayMid = 0.65 + (progress * 0.3);    // mid section darkens
+      const overlayRight = 0.05 + (progress * 0.6);   // right side darkens
 
-    heroOverlay.style.background = `
-      linear-gradient(
-        90deg,
-        rgba(20, 22, 31, ${overlayAlpha}) 0%,
-        rgba(20, 22, 31, ${Math.min(overlayAlpha - 0.07, 0.98)}) 25%,
-        rgba(20, 22, 31, ${overlayMid}) 50%,
-        rgba(20, 22, 31, ${Math.min(overlayMid - 0.15, 0.85)}) 70%,
-        rgba(20, 22, 31, ${overlayRight}) 85%,
-        rgba(20, 22, 31, ${Math.max(overlayRight - 0.15, 0)}) 100%
-      ),
-      linear-gradient(
-        180deg,
-        rgba(20, 22, 31, 0.5) 0%,
-        transparent 35%
-      )
-    `;
+      heroOverlay.style.background = `
+        linear-gradient(
+          90deg,
+          rgba(20, 22, 31, ${overlayAlpha}) 0%,
+          rgba(20, 22, 31, ${Math.min(overlayAlpha - 0.07, 0.98)}) 25%,
+          rgba(20, 22, 31, ${overlayMid}) 50%,
+          rgba(20, 22, 31, ${Math.min(overlayMid - 0.15, 0.85)}) 70%,
+          rgba(20, 22, 31, ${overlayRight}) 85%,
+          rgba(20, 22, 31, ${Math.max(overlayRight - 0.15, 0)}) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(20, 22, 31, 0.5) 0%,
+          transparent 35%
+        )
+      `;
+    } else {
+      // Clear inline style on mobile so it falls back to the CSS vertical gradient
+      heroOverlay.style.background = '';
+    }
   }
 
   window.addEventListener('scroll', updateHeroBlur, { passive: true });
