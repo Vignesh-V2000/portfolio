@@ -1538,8 +1538,6 @@ ul { list-style: none; }
     line-height: 1.65;
     margin-bottom: 16px;
   }
-  /* Hide the second (longer) hero description on mobile for cleaner layout */
-  .hero-desc + .hero-desc { display: none; }
 
   .hero-tech-badges {
     gap: 8px;
