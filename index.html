@@ -36,7 +36,11 @@
   <section class="hero section" id="hero">
     <!-- Full-screen background image -->
     <div class="hero-bg" id="heroBg">
-      <img src="ProfilePic.jpg" alt="Vignesh V" class="hero-bg-img" id="heroBgImg">
+      <picture>
+        <source media="(max-width: 480px)" srcset="ProfilePic-mobile.jpg">
+        <source media="(max-width: 1024px)" srcset="ProfilePic-tablet.jpg">
+        <img src="ProfilePic.jpg" alt="Vignesh V" class="hero-bg-img" id="heroBgImg">
+      </picture>
     </div>
     <!-- Gradient overlays for text readability -->
     <div class="hero-overlay" id="heroOverlay"></div>
@@ -98,7 +102,7 @@
         </div>
         <div class="about-right">
           <div class="about-photo reveal reveal-delay-1">
-            <img src="ProfilePic2.jpg" alt="Vignesh V — Campus" class="about-photo-img">
+            <img src="ProfilePic2.jpg" alt="Vignesh V — Campus" class="about-photo-img" srcset="ProfilePic2-sm.jpg 600w, ProfilePic2.jpg 2297w" sizes="(max-width: 768px) 100vw, 400px" loading="lazy">
             <div class="about-photo-tag">📍 Pondicherry University</div>
           </div>
           <div class="about-stats">
